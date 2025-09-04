@@ -15,10 +15,13 @@ const HeroSection = () => {
             connections.
           </p>
           <div className="hero-buttons">
-            <a href="#" className="btn-primary">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdlm9VXD0_ncYF3XlgqVpiFxZRtQ1K6MZJbR6yX35VX_TDUOg/viewform"
+              className="btn-primary"
+            >
               ▶ Get Started
             </a>
-            <a href="#" className="btn-secondary">
+            <a href="/" className="btn-secondary">
               Watch Demo →
             </a>
           </div>

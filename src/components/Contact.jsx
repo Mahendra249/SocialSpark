@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import emailjs from "emailjs-com";
+import { message } from "antd";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     type: "influencer",
@@ -16,9 +17,29 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
-    alert("Message submitted successfully!");
-    setFormData({ type: "influencer", name: "", message: "" });
+
+    emailjs
+      .send(
+        "service_hmakres",
+        "template_x3ujdbx",
+        {
+          contact_type: formData.type,
+          from_name: formData.name,
+          message: formData.message,
+        },
+        "haNEllZFoDFSgLVVG"
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          message.success("Message submitted successfully!");
+          setFormData({ type: "influencer", name: "", message: "" });
+        },
+        (error) => {
+          console.error("Email sending error:", error.text);
+          message.error("Failed to send message. Please try again later.");
+        }
+      );
   };
 
   return (
@@ -29,7 +50,6 @@ const ContactForm = () => {
       </p>
 
       <form className="contact-form" onSubmit={handleSubmit}>
-        {/* Select Influencer or Brand */}
         <label>
           Contact Type:
           <select
@@ -43,7 +63,6 @@ const ContactForm = () => {
           </select>
         </label>
 
-        {/* Input Name Instead of Select */}
         <label>
           {formData.type === "influencer"
             ? "Influencer Name (with ownership if needed)"
@@ -64,7 +83,6 @@ const ContactForm = () => {
           />
         </label>
 
-        {/* Message Box */}
         <label>
           Your Message:
           <textarea
@@ -77,7 +95,6 @@ const ContactForm = () => {
           ></textarea>
         </label>
 
-        {/* Submit Button */}
         <button type="submit" className="btn-primary">
           Submit Message
         </button>

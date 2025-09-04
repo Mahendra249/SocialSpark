@@ -99,7 +99,10 @@ const CTASection = () => {
 
         {/* CTA Buttons */}
         <div className="cta-buttons animate-fadeInUp delay-1000">
-          <a href="#" className="btn-primary">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdlm9VXD0_ncYF3XlgqVpiFxZRtQ1K6MZJbR6yX35VX_TDUOg/viewform"
+            className="btn-primary"
+          >
             <span className="relative z-10 flex items-center">
               Get Started
               <svg
